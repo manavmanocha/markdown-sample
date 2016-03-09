@@ -224,7 +224,6 @@ var push = comproDLS.Push();
 
 push.connect(orgid, userid).then(
   function callback(notifications) {
-      
         notifications.on("push_connect", function (eventContext) {
             console.log("Successfully established a connection with the PUSH services");
 
@@ -254,7 +253,6 @@ push.connect(orgid, userid).then(
         notifications.on("presenceupdate", function (eventContext) {
             console.log("An online user may have gone offline, or changed his/her status");
         });
-
   }, 
   function error(err) {
     /*
