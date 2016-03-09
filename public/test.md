@@ -4,7 +4,7 @@ The official comproDLS SDK for JavaScript, available for browsers and Node.js ba
 ## Key Concepts
 
 ### Javascript Promises
-Most of the functions in comproDLS SDK are asynchronous and returns a Javascript promise. We use [Q library] (https://github.com/kriskowal/q) for promises. If you are not familiar with promises, please go through [Q library documentation] (http://documentup.com/kriskowal/q/).
+Most of the functions in comproDLS SDK are asynchronous and returns a Javascript promise. We use [Q library](https://github.com/kriskowal/q) for promises. If you are not familiar with promises, please go through [Q library documentation](http://documentup.com/kriskowal/q/).
 
 ### What is a token?
 comproDLS uses a token based authentication mechanism i.e. it allows users to enter user credentials (organisationid, username and password) to obtain a security token. Once the token is obtained, this can be used to access protected resources/APIs instead of entering user credentials again. The method to obtain token is explained in [Usage](https://github.com/comprodls/comprodls-sdk-js#authwithcredentials) section. 
@@ -221,17 +221,14 @@ Following is an example of using PUSH API SDK adaptor to get notifications on st
 
 ```
 var push = comproDLS.Push();
-
 push.connect(orgid, userid).then(
   function callback(notifications) {
         notifications.on("push_connect", function (eventContext) {
             console.log("Successfully established a connection with the PUSH services");
-
             /* This automatically makes the current authenticated user online, 
             * sending appropriate events (within the organization).
             */ 
         });
-        
         notifications.on("push_error", function (eventContext) {
             if(eventContext.error.message == "connect_error") {
                 console.log("Connect error, " + eventContext.error.description);
@@ -245,16 +242,13 @@ push.connect(orgid, userid).then(
              * If Timeout, try connecting again.. 
              */
         });
-
         notifications.on("presence", function (eventContext) {
             console.log("List of all online users=" + eventContext.result);
         });
-
         notifications.on("presenceupdate", function (eventContext) {
             console.log("An online user may have gone offline, or changed his/her status");
         });
-  }, 
-  function error(err) {
+  }, function error(err) {
     /*
      * An error occurred while establishing a connection with the PUSH services
      */  
